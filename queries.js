@@ -12,7 +12,7 @@ var connectionString = ("postgres://giarkjrnadplmu:c648a406d61eecd51dcd136193d39
 console.log(connectionString);
 var db = pgp(connectionString);
 
-function getAllPuppies(req, res, next) {
+function getAllQuestions(req, res, next) {
   db.connect()
       .then(obj => {
                 obj.done(); // success, release the connection;
