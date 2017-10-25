@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../queries');
 
 
-router.get('/api/questions', db.getQuestions);
+router.get('/api/questions', db.getAllQuestions);
 router.get('/api/puppies/:id', db.getSinglePuppy);
 router.post('/api/puppies', db.createPuppy);
 router.put('/api/puppies/:id', db.updatePuppy);
