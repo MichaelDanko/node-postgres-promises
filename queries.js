@@ -104,7 +104,7 @@ function removePuppy(req, res, next) {
 
 
 module.exports = {
-  getAllPuppies: getAllPuppies,
+  getAllQuestions: getAllQuestions,
   getSinglePuppy: getSinglePuppy,
   createPuppy: createPuppy,
   updatePuppy: updatePuppy,
