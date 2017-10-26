@@ -102,7 +102,7 @@ function removeQuestion(req, res, next) {
 module.exports = {
   getAllQuestions: getAllQuestions,
   getSingleQuestion: getSingleQuestion,
-  createQuesiton: createQuestion,
+  createQuestion: createQuestion,
   updateQuestion: updateQuestion,
   removeQuestion: removeQuestion
 };

@@ -4,10 +4,10 @@ var db = require('../queries');
 
 
 router.get('/api/questions', db.getAllQuestions);
-router.get('/api/questions/:id', db.getSinglePuppy);
-router.post('/api/questions', db.createPuppy);
-router.put('/api/questions/:id', db.updatePuppy);
-router.delete('/api/questions/:id', db.removePuppy);
+router.get('/api/questions/:id', db.getSingleQuestion);
+router.post('/api/questions', db.createQuestion);
+router.put('/api/questions/:id', db.updateQuestion);
+router.delete('/api/questions/:id', db.removeQuestion);
 
 // application -------------------------------------------------------------
 router.get('/', function (req, res) {
