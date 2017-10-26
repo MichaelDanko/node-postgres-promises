@@ -1,4 +1,5 @@
 const restify = require('restify'),
+  plugins = require('restify').plugins,
   { Client } = require('pg'),
   server = restify.createServer(),
   gets = require('./apis/gets.js'),
@@ -11,6 +12,8 @@ const client = new Client({
 })
 
 client.connect()
+
+server.use(plugins.bodyParser())
 
 server.listen(process.env.port || process.env.PORT || 5000, () => {
   console.log(server.name, "+++", server.url)

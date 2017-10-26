@@ -20,7 +20,6 @@ function gets(server, client) {
                      if (err) throw err
                      console.log(resp.rows)
                      res.send(resp.rows)
-                     client.end()
                    }
      )
 

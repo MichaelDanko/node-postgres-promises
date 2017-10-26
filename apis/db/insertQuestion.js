@@ -8,7 +8,7 @@ function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
-function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknown User') {
+function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknown User', resp) {
 
   let questId = guid()
 
@@ -31,18 +31,16 @@ function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknow
                 (
                     QUEST_ID
                   , USER_ID
-                  , RANKING
                 )
                 VALUES
                 (
                     '${questId}'
                   , '${userId}'
-                  , 1
                 );
               `, (err, res) => {
     if (err) throw err
-    console.log(res)
-    client.end()
+      console.log(res)
+      resp.send('Action completed')
   })
 }
 
