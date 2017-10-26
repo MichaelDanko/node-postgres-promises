@@ -18,6 +18,7 @@ function posts(server, client) {
     let questionId = req.body.questionId,
       answer = req.body.answer,
       answerId = guid()
+      console.log(questionId)
 
       client.query(`
           INSERT INTO ANSWERS (ANSWER_ID, ANSWER)
