@@ -11,7 +11,7 @@ function guid() {
 function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknown User', resp) {
 
   let questId = guid()
-
+  console.log(question)
   client.query(`
                 INSERT INTO QUESTIONS
                 (
