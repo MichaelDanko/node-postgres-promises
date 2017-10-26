@@ -37,7 +37,7 @@ function posts(server, client) {
       entity = req.body.entity,
       userId = req.body.userId
 
-    console.log(questionId)
+    console.log(question)
 
     insertQuestion(client, question, entity, userId, res)
 
