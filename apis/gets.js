@@ -12,12 +12,13 @@ function gets(server, client) {
                       q.QUESTION
                     , uq.USER_ID
                     , q.quest_id
+                    , q.ranking
                   FROM QUESTIONS q
                   JOIN
                     USER_TO_QUESTION uq
                   ON q.QUEST_ID = uq.QUEST_ID
                   WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS)
-                  ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)));
+                  ORDER BY q.RANKING desc;
                  `, (err, resp) => {
       if (err) throw err
       console.log(resp.rows)
@@ -64,7 +65,7 @@ function gets(server, client) {
                  JOIN
                    USER_TO_QUESTION uq
                  ON q.QUEST_ID = uq.QUEST_ID
-                 WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS) 
+                 WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS)
                  ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)))
                  OFFSET ${pageNum} * ${resultsPerPage}
                  LIMIT ${resultsPerPage};

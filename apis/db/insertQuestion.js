@@ -24,7 +24,7 @@ function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknow
                     '${questId}'
                   , '${question}'
                   , '${entity}'
-                  , 1
+                  , 2
                 );
 
                 INSERT INTO USER_TO_QUESTION
