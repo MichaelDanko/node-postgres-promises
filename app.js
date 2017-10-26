@@ -14,6 +14,7 @@ const client = new Client({
 client.connect()
 
 server.use(plugins.bodyParser())
+server.use(plugins.queryParser())
 
 server.listen(process.env.port || process.env.PORT || 5000, () => {
   console.log(server.name, "+++", server.url)
