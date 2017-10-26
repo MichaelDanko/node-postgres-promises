@@ -16,6 +16,14 @@ client.connect()
 server.use(plugins.bodyParser())
 server.use(plugins.queryParser())
 
+server.use(
+  function crossOrigin(req,res,next){
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    return next();
+  }
+)
+
 server.listen(process.env.port || process.env.PORT || 5000, () => {
   console.log(server.name, "+++", server.url)
 })

@@ -28,7 +28,7 @@ function posts(server, client) {
         `, (err, resp) => {
             if (err) throw err
             console.log(resp.rows)
-            res.send('Inserted Correctly')
+            res.send('Inserted Correc')
       })
   })
 
