@@ -34,7 +34,7 @@ function getAllQuestions(req, res, next) {
 
 function getSingleQuestion(req, res, next) {
   var pupID = parseInt(req.params.id);
-  db.one('select * from pups where id = $1', pupID)
+  db.one('select * from question_answer where id = $1', pupID)
     .then(function (data) {
       res.status(200)
         .json({
