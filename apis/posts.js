@@ -18,7 +18,6 @@ function posts(server, client) {
     let questionId = req.body.questionId,
       answer = req.body.answer,
       answerId = guid()
-      console.log(questionId)
 
       client.query(`
           INSERT INTO ANSWERS (ANSWER_ID, ANSWER)
@@ -37,6 +36,8 @@ function posts(server, client) {
     let question = req.body.question,
       entity = req.body.entity,
       userId = req.body.userId
+
+    console.log(questionId)
 
     insertQuestion(client, question, entity, userId, res)
 
