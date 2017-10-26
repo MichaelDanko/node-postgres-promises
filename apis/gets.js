@@ -11,10 +11,12 @@ function gets(server, client) {
                   SELECT
                       q.QUESTION
                     , uq.USER_ID
+                    , q.quest_id
                   FROM QUESTIONS q
                   JOIN
                     USER_TO_QUESTION uq
                   ON q.QUEST_ID = uq.QUEST_ID
+                  WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS)
                   ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)));
                  `, (err, resp) => {
       if (err) throw err
@@ -31,10 +33,12 @@ function gets(server, client) {
                  SELECT
                      q.QUESTION
                    , uq.USER_ID
+                   , q.quest_id
                  FROM QUESTIONS q
                  JOIN
                    USER_TO_QUESTION uq
                  ON q.QUEST_ID = uq.QUEST_ID
+                 WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS)
                  ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)))
                  LIMIT ${req.params.resultsPerPage};
                `, (err, resp) => {
@@ -55,10 +59,12 @@ function gets(server, client) {
                  SELECT
                      q.QUESTION
                    , uq.USER_ID
+                   , q.quest_id
                  FROM QUESTIONS q
                  JOIN
                    USER_TO_QUESTION uq
                  ON q.QUEST_ID = uq.QUEST_ID
+                 WHERE  q.QUEST_ID NOT IN (SELECT QUEST_ID FROM QUESTIONS_TO_ANSWERS) 
                  ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)))
                  OFFSET ${pageNum} * ${resultsPerPage}
                  LIMIT ${resultsPerPage};
