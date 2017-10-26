@@ -128,7 +128,7 @@ BEGIN
                                                          JOIN table2 b');
 
         INSERT INTO USER_TO_QUESTION (QUEST_ID, USER_ID)
-        VALUES ('502cf357-245f-4122-a9e8-29362b1fb9b7', '002cf357-245f-4122-a9e8-29362b1fb9b7');
+        VALUES ('502cf357-245f-4122-a9e8-29362b1fb9b7', 'Stephen the man Hunter!');
 
 
 
