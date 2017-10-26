@@ -59,14 +59,13 @@ function gets(server, client) {
                  JOIN
                    USER_TO_QUESTION uq
                  ON q.QUEST_ID = uq.QUEST_ID
-                 WHERE ROWNUM() > (${pageNum} * ${resultsPerPage})
                  ORDER BY (q.RANKING * (SELECT DATE_PART('day', NOW()::timestamp - q.CREATED_ON::timestamp)))
+                 OFFSET ${pageNum} * ${resultsPerPage}
                  LIMIT ${resultsPerPage};
                `, (err, resp) => {
                     if (err) throw err
                       console.log(resp.rows)
                       res.send(resp.rows)
-                      client.end()
                     }
     )
 
