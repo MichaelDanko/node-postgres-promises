@@ -10,7 +10,10 @@ function guid() {
 
 function insertQuestion(client, question, entity = 'No Entity', userId = 'Unknown User', resp) {
 
-  let questId = guid()
+  let questId = guid(),
+    questionSanitized = question.replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\//g, "//")
+
+    resp.send(questionSanitized)
 
   client.query(`
                 INSERT INTO QUESTIONS
